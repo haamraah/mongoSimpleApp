@@ -5,7 +5,7 @@ var Schema = mongoose.Schema;
 
 // Using the Schema constructor, create a new UserSchema object
 // This is similar to a Sequelize model
-var ArticleSchema = new Schema({
+var SavedArticleSchema = new Schema({
   // `title` is required and of type String
   title: {
     type: String,
@@ -19,7 +19,7 @@ var ArticleSchema = new Schema({
 });
 
 // This creates our model from the above schema, using mongoose's model method
-var savedArticle = mongoose.model("savedArticle", ArticleSchema);
+var SavedArticle = mongoose.model("SavedArticle", SavedArticleSchema);
 
 // Export the Article model
-module.exports = savedArticle;
+module.exports = SavedArticle;
