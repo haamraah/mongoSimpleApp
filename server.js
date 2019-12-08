@@ -26,13 +26,13 @@ app.use(express.json());
 // Make public a static folder
 app.use(express.static("public"));
 
+var MONGODB_URI =
+  process.env.MONGODB_URI ||
+  "mongodb://user:password1@ds353338.mlab.com:53338/heroku_277vpfkv";
 
-var MONGODB_URI = process.env.MONGODB_URI || "mongodb://user:password1@ds353338.mlab.com:53338/heroku_277vpfkv";
-
-mongoose.connect(MONGODB_URI);
-
-
-
+mongoose.connect(MONGODB_URI, {
+  useNewUrlParser: true,
+});
 
 // Connect to the Mongo DB
 // mongoose.connect("mongodb://localhost/unit18Populater", {
