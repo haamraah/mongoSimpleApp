@@ -27,7 +27,7 @@ app.use(express.json());
 app.use(express.static("public"));
 
 
-var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/unit18Populater";
+var MONGODB_URI = process.env.MONGODB_URI || "mongodb://user:password1@ds353338.mlab.com:53338/heroku_277vpfkv";
 
 mongoose.connect(MONGODB_URI);
 
