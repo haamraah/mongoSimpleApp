@@ -86,7 +86,7 @@ app.get("/delArticles", function(req, res) {
 app.post("/saveArticle", function(req, res) {
   // Create a new note and pass the req.body to the entry
   // Create a new savedArticle using the
-  db.SavedArticle.create(req.body)
+  db.savedArticle.create(req.body)
     .then(function(dbArticle) {
       // View the added result in the console
       console.log(dbArticle);
@@ -114,7 +114,7 @@ app.get("/articles", function(req, res) {
 // Route for getting all Articles from the db
 app.get("/savedArticles", function(req, res) {
   // Grab every document in the Articles collection
-  db.SavedArticle.find({})
+  db.savedArticle.find({})
     .then(function(dbArticle) {
       // If we were able to successfully find Articles, send them back to the client
       res.json(dbArticle);
@@ -143,7 +143,7 @@ app.get("/articles/:id", function(req, res) {
 
 app.get("/deleteArticle/:id", function(req, res) {
   // Using the id passed in the id parameter, prepare a query that finds the matching one in our db...
-  db.SavedArticle.remove({ _id: req.params.id })
+  db.savedArticle.remove({ _id: req.params.id })
     // ..and populate all of the notes associated with it
     .then(function(dbArticle) {
       // If we were able to successfully find an Article with the given id, send it back to the client
