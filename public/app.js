@@ -3,14 +3,18 @@ $.getJSON("/articles", function(data) {
   $("#articles").empty();
 
   // For each one
-  let newUl = $("<ul>").addClass("list-group w-100").attr("id","myUL");
+  let newUl = $("<ul>")
+    .addClass("list-group w-100")
+    .attr("id", "myUL");
 
   for (var i = 0; i < data.length; i++) {
     // Display the apropos information on the page
     let newLi = $("<li>")
       .addClass("list-group-item w-100")
       .attr("data-id", data[i]._id)
-      .html(data[i].title + "</br>" + data[i].link);
+      .html(
+        `${data[i].title} </br><a target="_blank" class = "btn btn-outline-success" href=${data[i].link} > Open Link </a>`
+      );
     let newButton = $("<button>")
       .addClass("saveArticle btn btn-outline-success float-right")
       .text("save")
@@ -26,14 +30,18 @@ $("#savedArticles").click(() => {
   // Grab the articles as a json
   $.getJSON("/savedArticles", function(data) {
     // For each one
-    let newUl = $("<ul>").addClass("list-group w-100").attr("id","myUL");
+    let newUl = $("<ul>")
+      .addClass("list-group w-100")
+      .attr("id", "myUL");
 
     for (var i = 0; i < data.length; i++) {
       // Display the apropos information on the page
       let newLi = $("<li>")
         .addClass("list-group-item w-100")
         .attr("data-id", data[i]._id)
-        .html(data[i].title + "</br>" + data[i].link);
+        .html(
+          `${data[i].title} </br><a target="_blank"class = "btn btn-outline-success" href=${data[i].link} > Open Link </a>`
+        );
       let newButton = $("<button>")
         .addClass("deleteArticle btn btn-outline-success float-right")
         .text("X")
@@ -48,8 +56,8 @@ $("#savedArticles").click(() => {
 $("#clear").click(() => {
   $.ajax({
     method: "GET",
-    url: "/delArticles"
-  })
+    url: "/delArticles",
+  });
   $("#articles").empty();
 });
 // // When you click the savenote button
@@ -75,26 +83,29 @@ $(document).on("click", ".saveArticle", function() {
     });
 });
 
-
 $(document).on("click", ".deleteArticle", function() {
   // Grab the id associated with the article from the submit button
   var thisId = $(this).attr("data-id");
   $.ajax({
     method: "GET",
     url: "/deleteArticle/" + thisId,
-  }).then(()=>{
+  }).then(() => {
     $("#articles").empty();
     // Grab the articles as a json
     $.getJSON("/savedArticles", function(data) {
       // For each one
-      let newUl = $("<ul>").addClass("list-group w-100").attr("id","myUL");
-  
+      let newUl = $("<ul>")
+        .addClass("list-group w-100")
+        .attr("id", "myUL");
+
       for (var i = 0; i < data.length; i++) {
         // Display the apropos information on the page
         let newLi = $("<li>")
           .addClass("list-group-item w-100")
           .attr("data-id", data[i]._id)
-          .html(data[i].title + "</br>" + data[i].link);
+          .html(
+            `${data[i].title} </br><a target="_blank"class = "btn btn-outline-success" href=${data[i].link} > Open Link </a>`
+          );
         let newButton = $("<button>")
           .addClass("deleteArticle btn btn-outline-success float-right")
           .text("X")
@@ -104,8 +115,7 @@ $(document).on("click", ".deleteArticle", function() {
       }
       $("#articles").append(newUl);
     });
-
-  })
+  });
 });
 
 // // When you click the savenote button
@@ -121,14 +131,18 @@ $(document).on("click", "#reScrape", function() {
       $("#articles").empty();
 
       // For each one
-      let newUl = $("<ul>").addClass("list-group w-100").attr("id","myUL");
+      let newUl = $("<ul>")
+        .addClass("list-group w-100")
+        .attr("id", "myUL");
 
       for (var i = 0; i < data.length; i++) {
         // Display the apropos information on the page
         let newLi = $("<li>")
           .addClass("list-group-item w-100")
           .attr("data-id", data[i]._id)
-          .html(data[i].title + "</br>" + data[i].link);
+          .html(
+            `${data[i].title} </br><a target="_blank"class = "btn btn-outline-success" href=${data[i].link} > Open Link </a>`
+          );
         let newButton = $("<button>")
           .addClass("saveArticle btn btn-outline-success float-right")
           .text("save")
@@ -141,16 +155,13 @@ $(document).on("click", "#reScrape", function() {
   });
 });
 
-
-
-
 function myFunction() {
   // Declare variables
   var input, filter, ul, li, a, i, txtValue;
-  input = document.getElementById('myInput');
+  input = document.getElementById("myInput");
   filter = input.value.toUpperCase();
   ul = document.getElementById("myUL");
-  li = ul.getElementsByTagName('li');
+  li = ul.getElementsByTagName("li");
 
   // Loop through all list items, and hide those who don't match the search query
   for (i = 0; i < li.length; i++) {

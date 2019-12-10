@@ -12,17 +12,9 @@
       background-color: #F2F6D0
     }
 
-    #wrapper {
-      margin-left: auto;
-      margin-right: auto;
+   
 
-    }
-
-    #articles {
-
-      overflow: auto;
-
-    }
+  
 
 
     li:nth-child(2n+1) {
@@ -71,25 +63,38 @@
 </head>
 
 <body>
-  <div class="container">
+  <div class="container-fluid">
     <div clas="row">
-      <div class="col-10">
-        <div class="jumbotron bg-white m-3">
-          <h1 class="display-4">Mongo Scraper</h1>
-          <div class="btn-group" role="group" aria-label="Basic example">
-            <button type="button" id="savedArticles" class="btn btn-outline-success">saved articles</button>
-            <button type="button" id="reScrape" class="btn btn-outline-success">re-Scrape</button>
-            <button type="button" id="clear" class="btn btn-outline-success">clear</button>
-          </div>
-          <hr class="my-4">
-          <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
+      <div class="col-12">
 
-        </div>
+          <div class="card m-2 text-white" style="height:400px">
+              <img class="card-img-top" src="jbg.png" alt="Card image" style="height:400px">
+              <div class="card-img-overlay">
+                 
+                      <h1 class="display-4">Mongo Scraper</h1>
+                      <div class="btn-group" role="group" aria-label="Basic example">
+                        <button type="button" id="savedArticles" class="btn btn-outline-success">saved articles</button>
+                        <button type="button" id="reScrape" class="btn btn-outline-success">re-Scrape</button>
+                        <button type="button" id="clear" class="btn btn-outline-success">clear</button>
+                      </div>
+                      <hr class="my-4">
+                      <p >Scrape and Save articles from </p>
+                      <h1 class="display-4">Echo JS :</h1>
+                      <p>Community-driven news site entirely focused on JavaScript development, HTML5, and front-end news.</p>
+            
+                
+              </div>
+            </div>
+
+
+
+
+        
       </div>
 
     </div>
     <div class="row">
-      <div class="col-10">
+      <div class="col-12">
         <div id="wrapper">
           <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search...">
           <div id="articles"></div>
