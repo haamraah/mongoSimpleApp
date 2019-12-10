@@ -15,7 +15,6 @@
     #wrapper {
       margin-left: auto;
       margin-right: auto;
-      padding: 1%;
 
     }
 
@@ -27,12 +26,45 @@
 
 
     li:nth-child(2n+1) {
-      background-color: #ef5151;
+      background-color: #ffe48b;
 
     }
 
     li:nth-child(2n) {
-      background-color: #807676;
+      background-color: #e7c143;
+
+    }
+
+    #myInput {
+      background-image: url('/css/searchicon.png');
+      /* Add a search icon to input */
+      background-position: 10px 12px;
+      /* Position the search icon */
+      background-repeat: no-repeat;
+      /* Do not repeat the icon image */
+      width: 100%;
+      /* Full-width */
+      font-size: 16px;
+      /* Increase font-size */
+      padding: 12px 20px 12px 40px;
+      /* Add some padding */
+      border: 1px solid #ddd;
+      /* Add a grey border */
+      margin-bottom: 12px;
+      /* Add some space below the input */
+    }
+
+
+
+
+    #myUL li:hover {
+      background-color: #eee;
+      /* Add a hover effect to all links, except for headers */
+
+    }
+
+    #myUL li {
+      width: 100%;
 
     }
   </style>
@@ -41,23 +73,27 @@
 <body>
   <div class="container">
     <div clas="row">
-      <div class="jumbotron">
-        <h1 class="display-4">Mongo Scraper</h1>
-        <div class="btn-group" role="group" aria-label="Basic example">
-            <button type="button" id="savedArticles" class="btn btn-secondary">saved articles</button>
-            <button type="button" id="reScrape"  class="btn btn-secondary">re-Scrape</button>
-            <button type="button" id="clear" class="btn btn-secondary">clear</button>
+      <div class="col-10">
+        <div class="jumbotron bg-white m-3">
+          <h1 class="display-4">Mongo Scraper</h1>
+          <div class="btn-group" role="group" aria-label="Basic example">
+            <button type="button" id="savedArticles" class="btn btn-outline-success">saved articles</button>
+            <button type="button" id="reScrape" class="btn btn-outline-success">re-Scrape</button>
+            <button type="button" id="clear" class="btn btn-outline-success">clear</button>
           </div>
-        <hr class="my-4">
-        <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
-        
+          <hr class="my-4">
+          <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
+
+        </div>
       </div>
+
     </div>
     <div class="row">
-      <div id="wrapper">
-
-        <div id="articles"></div>
-
+      <div class="col-10">
+        <div id="wrapper">
+          <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search...">
+          <div id="articles"></div>
+        </div>
       </div>
     </div>
 

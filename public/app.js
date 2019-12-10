@@ -3,12 +3,12 @@ $.getJSON("/articles", function(data) {
   $("#articles").empty();
 
   // For each one
-  let newUl = $("<ul>").addClass("list-group");
+  let newUl = $("<ul>").addClass("list-group w-100").attr("id","myUL");
 
   for (var i = 0; i < data.length; i++) {
     // Display the apropos information on the page
     let newLi = $("<li>")
-      .addClass("list-group-item")
+      .addClass("list-group-item w-100")
       .attr("data-id", data[i]._id)
       .html(data[i].title + "</br>" + data[i].link);
     let newButton = $("<button>")
@@ -26,12 +26,12 @@ $("#savedArticles").click(() => {
   // Grab the articles as a json
   $.getJSON("/savedArticles", function(data) {
     // For each one
-    let newUl = $("<ul>").addClass("list-group");
+    let newUl = $("<ul>").addClass("list-group w-100").attr("id","myUL");
 
     for (var i = 0; i < data.length; i++) {
       // Display the apropos information on the page
       let newLi = $("<li>")
-        .addClass("list-group-item")
+        .addClass("list-group-item w-100")
         .attr("data-id", data[i]._id)
         .html(data[i].title + "</br>" + data[i].link);
       let newButton = $("<button>")
@@ -87,12 +87,12 @@ $(document).on("click", ".deleteArticle", function() {
     // Grab the articles as a json
     $.getJSON("/savedArticles", function(data) {
       // For each one
-      let newUl = $("<ul>").addClass("list-group");
+      let newUl = $("<ul>").addClass("list-group w-100").attr("id","myUL");
   
       for (var i = 0; i < data.length; i++) {
         // Display the apropos information on the page
         let newLi = $("<li>")
-          .addClass("list-group-item")
+          .addClass("list-group-item w-100")
           .attr("data-id", data[i]._id)
           .html(data[i].title + "</br>" + data[i].link);
         let newButton = $("<button>")
@@ -121,12 +121,12 @@ $(document).on("click", "#reScrape", function() {
       $("#articles").empty();
 
       // For each one
-      let newUl = $("<ul>").addClass("list-group");
+      let newUl = $("<ul>").addClass("list-group w-100").attr("id","myUL");
 
       for (var i = 0; i < data.length; i++) {
         // Display the apropos information on the page
         let newLi = $("<li>")
-          .addClass("list-group-item")
+          .addClass("list-group-item w-100")
           .attr("data-id", data[i]._id)
           .html(data[i].title + "</br>" + data[i].link);
         let newButton = $("<button>")
@@ -140,3 +140,26 @@ $(document).on("click", "#reScrape", function() {
     });
   });
 });
+
+
+
+
+function myFunction() {
+  // Declare variables
+  var input, filter, ul, li, a, i, txtValue;
+  input = document.getElementById('myInput');
+  filter = input.value.toUpperCase();
+  ul = document.getElementById("myUL");
+  li = ul.getElementsByTagName('li');
+
+  // Loop through all list items, and hide those who don't match the search query
+  for (i = 0; i < li.length; i++) {
+    a = li[i];
+    txtValue = a.textContent || a.innerText;
+    if (txtValue.toUpperCase().indexOf(filter) > -1) {
+      li[i].style.display = "";
+    } else {
+      li[i].style.display = "none";
+    }
+  }
+}
