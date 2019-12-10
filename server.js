@@ -80,7 +80,9 @@ app.get("/scrape", function(req, res) {
 });
 
 app.get("/delArticles", function(req, res) {
-  db.Article.remove();
+  db.Article.remove({}).then((a)=>{
+console.log(a,"aaaaaaaaaaaaaaaaaa")
+  });
 });
 
 // Route for saving/updating an Article's associated Note
